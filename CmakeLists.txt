@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.21)
+
+#Project Name
+project(OpenGL VERSION 0.1)
+
+# Specify C++ Standard
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Add compile options
+add_compile_options(-v -Wall -Wextra -Wpedantic)
+
+# add executable
+add_executable(OpenGL src/main.cpp)
+
+# Add configuration file with maros defining the contents
+configure_file(config/OpenGlConfig.h.in config/OpenGLConfig.h)
+
+# Add the subdirectory and its cmake configuration
+add_subdirectory(lib)
+
+# Link the target with library that is defined in the subdirectory
+target_link_libraries(OpenGL PUBLIC SuperPrinter)
+
+# Make sure project includes all files in the build directory
+target_include_directories(OpenGL PUBLIC
+    "${PROJECT_BINARY_DIR}"
+    "${PROJECT_SOURCE_DIR}/lib"
+)

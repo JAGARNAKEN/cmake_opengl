@@ -1,0 +1,4 @@
+namespace SuperPrinter {
+    void mrPrint();
+}
+

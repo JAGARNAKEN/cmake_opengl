@@ -1,0 +1,1 @@
+add_library(SuperPrinter super_printer.cpp)
